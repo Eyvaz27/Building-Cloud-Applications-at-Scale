@@ -1,0 +1,121 @@
+ls -l /usr/bin/ | wc -l > bin.txt
+
+ls -l /wrongpath && touch newfile.txt
+ls -l hello.sh && touch newfile.txt
+
+STR=$'1. This is a line\n2. This is a line\n3. This is a line.'
+echo "$STR" > lines.txt
+cat lines.txt | sort -r | less
+cat lines.txt | grep 3 > match.txt
+
+echo "something else" >> append.txt
+
+# ignore/throw away the error message 
+ls -l /wrongpath 2> /dev/null
+
+# look at the log file of system
+tail -f /var/log/dpkg.log
+tail -n 2 /var/log/dpkg.log
+
+# history of commands
+history | less
+history | grep tail
+# run specific command with (n) ID from history
+!ID
+# run the last command
+!!
+ 
+# recursively search for directory name
+find YOUR_STARTING_DIRECTORY -type d -name "*99966*" -print
+find ~ -type d -name "*99966*" -print
+#
+# echo, sort and count words (& grep specific entry)
+echo -e "Apple\nCarrot\nBanana\nApple" | sort | uniq -c
+echo -e "Apple\nCarrot\nBanana\nApple" | sort| uniq -c | grep Apple
+#
+# reverse string order
+echo 1993 | rev
+#
+# shuffle the data; take n lines; 
+# write result to file
+shuf -n 3 file.txt > small-file.txt
+#
+# grep specific text from file line by line && count them
+grep apple filter-file.txt
+grep -c apple filter-file.txt
+#
+# Find either pattern in file with counting
+grep -e apple -e pear filter-file.txt
+grep -c -e apple -e pear filter-file.txt
+#
+# Show all lines that DON'T contain pattern
+grep -v apple filter-file.txt
+#
+# Find all bash scripts
+find . -name "*.sh"
+#
+# Find all Executable | Non-Invisible | Files
+find . -perm /+x ! -name '.*' -type f
+#
+# Find all Executable | Non-Invisible | Files and ignore .git directories 
+find . -perm /+x -not -path '*/\.*' -type f
+#
+# Install locate command and update metadata database 
+sudo apt-get install mlocate
+sudo updatedb
+#
+# search for files:
+locate .zshrc
+locate -i .ZSHRC  // case insensitive
+#
+# search for file (.zshrc) in entire file system 
+sudo find / -name .zshrc
+#
+# "locate" command works much much quicker than "find"
+#
+# find files with specific naming pattern
+find ./foo -name "foo*" -type f -print
+#
+# remove the found files from directory
+find ./foo -name "foo*" -type f -print | xargs /bin/rm -f
+#
+# synchronize two directories
+# manipulate only dir1 and dir2 will 
+# automatically synchronize
+rsync -av dir1/ dir2
+#
+# Archiving directories via "zip" & "tar"
+# command "argument" archive_name directory_to_zip
+zip -r project.zip project
+tar -zcvf project.zip project
+# UnArchiving directories via "zip" & "tar"
+unzip project.zip
+tar -zxvf project.zip
+#
+# Find the difference between files
+diff fruit1.txt fruit2.txt
+#
+# get unique items in file and count them
+uniq fruit1.txt
+uniq -c fruit1.txt
+#
+# sort file content
+sort fruit1.txt
+# sort the file content in reverse order & find uniques
+sort -r fruit1.txt | uniq -c
+#
+# make string uppercase
+echo "lower" | tr a-z A-Z
+#
+# 
+   
+
+
+
+
+
+
+
+
+
+
